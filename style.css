@@ -1,0 +1,262 @@
+/*  RESET  */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/*  BODY  */
+body {
+    background: radial-gradient(circle at top, #0f172a, #020617);
+    color: white;
+}
+
+/*  LAYOUT  */
+.container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1300px;
+    margin: auto;
+}
+
+/*  SIDEBAR  */
+.sidebar {
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.card {
+    background: #111827;
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.level {
+    background: linear-gradient(135deg, #9333ea, #7c3aed);
+    padding: 14px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 55px;
+    left: 0;
+    right: 0;
+    background: #111827;
+    border-radius: 12px;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.dropdown .option {
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.dropdown .option:last-child {
+    border-bottom: none;
+}
+
+.dropdown .option:hover {
+    background: #2563eb;
+}
+
+.score {
+    display: flex;
+    justify-content: space-between;
+}
+
+.captured-row {
+    margin-top: 6px;
+    font-size: 18px;
+}
+
+.piece-points {
+    font-size: 14px;
+    margin-top: 6px;
+}
+
+.piece-points li {
+    list-style: none;
+}
+
+.reset {
+    margin-top: auto;
+    background: #2563eb;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    color: white;
+    cursor: pointer;
+}
+
+/*  MAIN  */
+.main {
+    max-width: 640px;
+}
+
+.turn {
+    color: #facc15;
+}
+
+.board-wrapper {
+    background: #7a3e12;
+    padding: 20px;
+    border-radius: 20px;
+    width: fit-content;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(8, 64px);
+    grid-template-rows: repeat(8, 64px);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    cursor: pointer;
+}
+
+.light {
+    background: #f0d9b5;
+}
+
+.dark {
+    background: #b58863;
+}
+
+.square.white {
+    color: white;
+    text-shadow: 0 0 3px black;
+}
+
+.square.black {
+    color: black;
+    text-shadow: 0 0 3px white;
+}
+
+.square.selected {
+    outline: 4px solid yellow;
+}
+
+.square.move {
+    background: #4ade80 !important;
+}
+
+.square.capture {
+    background: #f87171 !important;
+}
+
+/*  RULES  */
+.rules ul {
+    font-size: 13px;
+    line-height: 1.5;
+    padding-left: 16px;
+}
+
+.rules li {
+    margin-bottom: 4px;
+}
+
+/*  LOADING  */
+#loadingScreen {
+    position: fixed;
+    inset: 0;
+    background: #020617;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.logo-icon {
+    font-size: 60px;
+    margin-bottom: 8px;
+}
+
+.logo-text {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.loading-text {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-bottom: 15px;
+}
+
+.progress-bar {
+    width: 200px;
+    height: 10px;
+    background: #333;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-bar #progress {
+    height: 100%;
+    width: 0%;
+    background: #2563eb;
+    transition: width 0.2s;
+}
+
+/*  CHECKMATE  */
+#checkmateOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+}
+
+.checkmate-box {
+    background: #111827;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 30px red;
+}
+
+.checkmate-box h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #facc15;
+}
+
+.checkmate-box button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
+}

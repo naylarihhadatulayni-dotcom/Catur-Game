@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Catur</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<div id="checkmateOverlay">
+    <div class="checkmate-box">
+        <h2>♟ SKAKMAT</h2>
+        <p id="winnerText"></p>
+        <button onclick="resetGame()">Main Lagi</button>
+    </div>
+</div>
+
+<body>
+
+    <!-- LOADING -->
+    <div id="loadingScreen">
+        <div class="loader-content">
+            <div class="logo-icon">♟</div>
+            <div class="logo-text">GAME CATUR</div>
+            <div class="loading-text">Loading...</div>
+            <div class="progress-bar">
+                <div id="progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="gameContent" style="display:none;">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="card rules">
+                <b onclick="toggleRules()" style="cursor:pointer;">
+                    📘 Cara Bermain ▼
+                </b>
+
+                <div id="rulesContent" style="display:none; margin-top:8px;">
+                    <ul>
+                        <li>Giliran dimulai dari ⚪ Putih</li>
+                        <li>Klik bidak → klik petak tujuan</li>
+                        <li>Hijau = langkah sah</li>
+                        <li>Merah = menangkap lawan</li>
+                        <li>Raja tidak boleh dalam skak</li>
+                        <li>Skakmat = permainan selesai</li>
+                        <li>Rokade & en passant tersedia</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card header">
+                <b>Status Game</b>
+            </div>
+
+            <div class="level">
+                <div>Level</div>
+                <b id="currentLevel">Easy ▼</b>
+
+                <div id="levelDropdown" class="dropdown">
+                    <div class="option" onclick="setLevel('Easy')">Easy</div>
+                    <div class="option" onclick="setLevel('Medium')">Medium</div>
+                    <div class="option" onclick="setLevel('Hard')">Hard</div>
+                </div>
+            </div>
+
+            <div class="card score">
+                ⚪ Putih <span id="scoreWhite">0 pts</span>
+            </div>
+
+            <div class="card score">
+                ⚫ Hitam <span id="scoreBlack">0 pts</span>
+            </div>
+
+            <div class="card">
+                <b>Bidak Tertangkap</b>
+                <div class="captured-row">⚪ <span id="capturedWhite"></span></div>
+                <div class="captured-row">⚫ <span id="capturedBlack"></span></div>
+            </div>
+
+            <div class="card">
+                <b>💎 Nilai Bidak</b>
+                <ul class="piece-points">
+                    <li>♙ Pion : 2 pts</li>
+                    <li>♘ Kuda : 6 pts</li>
+                    <li>♗ Gajah : 6 pts</li>
+                    <li>♖ Benteng : 10 pts</li>
+                    <li>♕ Ratu : 18 pts</li>
+                </ul>
+            </div>
+
+            <button class="reset" onclick="resetGame()">🔄 Mulai Ulang</button>
+
+        </aside>
+
+        <!-- MAIN -->
+        <main class="main">
+
+            <h1>
+                ♟ Catur
+                <span class="turn">
+                    Giliran: <b id="turnText">Putih</b>
+                </span>
+            </h1>
+
+            <div class="board-wrapper">
+                <div id="board" class="board"></div>
+            </div>
+
+            <div class="info">
+                🟩 Langkah valid<br>
+                🟥 Menangkap lawan<br>
+            </div>
+
+            <div id="checkmateBanner"></div>
+
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
